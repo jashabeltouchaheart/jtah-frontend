@@ -9,13 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        // Single font family - Plus Jakarta Sans, no display/body split needed
-        sans: [
-          "var(--font-jakarta)",
-          "Plus Jakarta Sans",
-          "system-ui",
-          "sans-serif",
-        ],
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        serif: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
+        display: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
       },
       colors: {
         "lilac-tint": "var(--lilac-tint)",

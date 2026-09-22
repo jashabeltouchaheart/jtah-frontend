@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import "./globals.css";
 
-const jakartaSans = Plus_Jakarta_Sans({
+// Headings: Playfair Display. Body and UI: Inter.
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-playfair",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jakartaSans.variable}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="antialiased min-h-screen flex flex-col">
         <SmoothScrollProvider>
           <Nav />

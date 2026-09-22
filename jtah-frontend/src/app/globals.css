@@ -14,9 +14,15 @@
 body {
   background-color: var(--lilac-tint);
   color: var(--indigo-deep);
-  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4,
+.type-hero, .type-headline, .type-title {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
@@ -65,4 +71,60 @@ body {
     line-height: 1.5;
     color: var(--text-secondary);
   }
+}
+
+
+/* Hero carousel auto animation */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-30px, 20px) scale(1.08); }
+}
+.hero-rise { animation: heroRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-orb { animation: heroFloat 12s ease-in-out infinite; }
+.hero-orb--slow { animation-duration: 18s; animation-direction: reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise, .hero-orb { animation: none; }
+}
+
+/* Pre footer CTA ribbons */
+@keyframes ctaSway {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(6px, -8px); }
+}
+.cta-ribbon { animation: ctaSway 10s ease-in-out infinite; transform-box: fill-box; }
+.cta-ribbon--slow { animation-duration: 14s; animation-direction: reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .cta-ribbon { animation: none; }
+}
+
+/* Nav link underline: grows in from the left, exits to the right */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6a4f9b, #9b8fd6);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after { transition: none; }
 }
