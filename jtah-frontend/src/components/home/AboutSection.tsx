@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MoveRight } from "lucide-react";
 
 const STATS = [
-  { label: "Since our Inception", value: "2000", prefix: "Over" },
+  { label: "Touching lives", value: "2000", prefix: "Since" },
   { label: "Communities reached", value: "200+", prefix: "" },
   { label: "Lives Impacted", value: "10,000+", prefix: "" },
 ];
@@ -82,7 +82,7 @@ export function AboutSection() {
             />
             <div className="bg-[#eeecf7]/60 p-6 sm:p-8 flex flex-col justify-between space-y-6">
               <blockquote className="text-sm sm:text-base lg:text-lg font-medium text-[#3a3560] leading-snug italic">
-                "We don't just support people, we walk with them — for the long
+                "We don't just support people, we walk with them - for the long
                 term."
               </blockquote>
               <div>
