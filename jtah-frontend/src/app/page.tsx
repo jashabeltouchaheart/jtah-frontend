@@ -1,19 +1,19 @@
-import { sanityFetch } from "@/sanity/fetch";
-import { GALLERY_IMAGES_QUERY } from "@/sanity/queries";
-import type { GalleryImage } from "@/types/gallery";
+import { HeroCarousel } from '@/components/home/HeroCarousel';
+import { AboutSection } from '@/components/home/AboutSection';
+import { OurWorkSection } from '@/components/home/OurWorkSection';
+import { InnovationSection } from '@/components/home/InnovationSection';
+import { EventsSection } from '@/components/home/EventsSection';
+import { CtaSection } from '@/components/home/CtaSection';
 
 export default async function HomePage() {
-  const images = await sanityFetch<GalleryImage[]>(GALLERY_IMAGES_QUERY, {}, [
-    "galleryImage",
-  ]);
-
   return (
-    <main className="min-h-screen flex items-center justify-center px-6">
-      <p className="type-body" style={{ color: "var(--text-secondary)" }}>
-        JTAH Foundation - coming soon.
-        {images.length > 0 &&
-          ` (${images.length} gallery image${images.length === 1 ? "" : "s"} in CMS)`}
-      </p>
+    <main className="min-h-screen flex flex-col bg-white">
+      <HeroCarousel />
+      <AboutSection />
+      <OurWorkSection />
+      <InnovationSection />
+      <EventsSection />
+      <CtaSection />
     </main>
   );
 }
