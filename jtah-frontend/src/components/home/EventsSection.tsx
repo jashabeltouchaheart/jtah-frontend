@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MoveRight, CalendarDays } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface EventItem {
   title: string;
@@ -63,22 +64,24 @@ export function EventsSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {EVENTS.map((evt) => (
+          {EVENTS.map((evt, idx) => (
             <Link
               key={evt.title}
               href={evt.href}
               className="group block space-y-3"
             >
               {/* Image with zoom and overlay on hover */}
-              <div className="overflow-hidden rounded-2xl border border-[#3a3560]/10 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
-                <div
-                  className="w-full h-44 sm:h-48 group-hover:scale-105 transition-transform duration-500 ease-out relative"
-                  style={{ background: evt.bg }}
-                >
-                  {/* Dark overlay on hover for readability */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
+              <Reveal delay={idx * 0.08}>
+                <div className="overflow-hidden rounded-2xl border border-[#3a3560]/10 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
+                  <div
+                    className="w-full h-44 sm:h-48 group-hover:scale-105 transition-transform duration-500 ease-out relative"
+                    style={{ background: evt.bg }}
+                  >
+                    {/* Dark overlay on hover for readability */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
+                  </div>
                 </div>
-              </div>
+              </Reveal>
 
               <div className="space-y-1 px-0.5">
                 <h3 className="font-bold text-sm sm:text-base text-[#3a3560] group-hover:text-[#7c74b2] transition-colors duration-200 leading-snug">

@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { Play, MoveRight } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function InnovationSection() {
   return (
     <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#3a3560]/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Video Card */}
-        <div className="lg:col-span-5 w-full group cursor-pointer">
+        <Reveal className="lg:col-span-5 w-full group cursor-pointer">
           <div
             className="w-full aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden relative flex flex-col items-center justify-center text-white shadow-md group-hover:shadow-2xl transition-shadow duration-500"
             style={{
@@ -26,7 +27,7 @@ export function InnovationSection() {
             {/* Ripple ring on hover */}
             <div className="absolute inset-0 rounded-full border-2 border-white/0 group-hover:border-white/10 scale-50 group-hover:scale-100 transition-all duration-700 ease-out pointer-events-none" />
           </div>
-        </div>
+        </Reveal>
 
         {/* Copy */}
         <div className="lg:col-span-4 space-y-5 sm:space-y-6">
@@ -53,12 +54,15 @@ export function InnovationSection() {
         {/* Accent graphic */}
         <div className="lg:col-span-3">
           <div className="space-y-3">
-            <div
-              className="w-full aspect-[16/9] sm:aspect-square rounded-2xl border border-[#3a3560]/10 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300"
-              style={{
-                background: "linear-gradient(135deg, #d8d3e8 0%, #c4bddb 100%)",
-              }}
-            />
+            <Reveal delay={0.15}>
+              <div
+                className="w-full aspect-[16/9] sm:aspect-square rounded-2xl border border-[#3a3560]/10 shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #d8d3e8 0%, #c4bddb 100%)",
+                }}
+              />
+            </Reveal>
             <p className="text-[11px] text-[#3a3560]/55 font-medium tracking-wide">
               Innovation. Technology. Impact.
             </p>

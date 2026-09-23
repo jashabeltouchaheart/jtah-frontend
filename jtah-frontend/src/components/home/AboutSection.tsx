@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 
 const STATS = [
   { label: "Touching lives", value: "2000", prefix: "Since" },
@@ -73,13 +74,15 @@ export function AboutSection() {
 
           {/* Quote card */}
           <div className="grid grid-cols-1 sm:grid-cols-2 rounded-2xl overflow-hidden shadow-sm border border-[#3a3560]/10 hover:shadow-md transition-shadow duration-300">
-            <div
-              className="min-h-[200px] sm:min-h-[220px] w-full"
-              style={{
-                background:
-                  "linear-gradient(135deg, #c48b60 0%, #a26943 50%, #7d4928 100%)",
-              }}
-            />
+            <Reveal className="min-h-[200px] sm:min-h-[220px] w-full">
+              <div
+                className="w-full h-full min-h-[200px] sm:min-h-[220px]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #c48b60 0%, #a26943 50%, #7d4928 100%)",
+                }}
+              />
+            </Reveal>
             <div className="bg-[#eeecf7]/60 p-6 sm:p-8 flex flex-col justify-between space-y-6">
               <blockquote className="text-sm sm:text-base lg:text-lg font-medium text-[#3a3560] leading-snug italic">
                 "We don't just support people, we walk with them - for the long
