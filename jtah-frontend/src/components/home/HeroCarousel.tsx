@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Play, Pause, MoveRight } from "lucide-react";
+import { Play, Pause, MoveRight, Users } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 interface Slide {
@@ -11,48 +11,47 @@ interface Slide {
   subtitle: string;
   description: string;
   bg: string;
+  mediaType: "photo" | "video";
+  cta: string;
 }
 
 const SLIDES: Slide[] = [
   {
     id: "01",
-    badge: "FEATURED EVENT",
-    title: "Jimmy Leslie",
-    subtitle: "Men Why the Silence",
+    badge: "MEET JTAH",
+    title: "Welcome to",
+    subtitle: "JTAH Foundation",
     description:
-      "A powerful conversation on mental health, masculinity and the importance of speaking up.",
+      "Meet our founder and the team behind two decades of service to women and the girl-child across Nigeria.",
     bg: "linear-gradient(135deg, #110e20 0%, #1e1938 45%, #4e3575 100%)",
+    mediaType: "photo",
+    cta: "Meet Our Team",
   },
   {
     id: "02",
-    badge: "COMMUNITY IMPACT",
-    title: "Women Empowerment",
-    subtitle: "Thriving Futures",
+    badge: "OUR TEAM",
+    title: "Meet the",
+    subtitle: "Team",
     description:
-      "Creating sustainable pathways for women to lead, innovate, and uplift local communities.",
+      "Hear directly from the people driving JTAH Foundation's work, in their own words.",
     bg: "linear-gradient(135deg, #121f1a 0%, #1f3429 45%, #3d604e 100%)",
+    mediaType: "video",
+    cta: "Watch the Introduction",
   },
   {
     id: "03",
-    badge: "YOUTH INITIATIVE",
-    title: "Back to School",
-    subtitle: "Empowering Young Minds",
+    badge: "OUR STORY",
+    title: "Our Story,",
+    subtitle: "Told Differently",
     description:
-      "Supplying educational materials and mentoring so every child can reach their potential.",
-    bg: "linear-gradient(135deg, #2b1810 0%, #462c1d 45%, #8c5738 100%)",
-  },
-  {
-    id: "04",
-    badge: "HEALTH & WELLBEING",
-    title: "Care Outreach",
-    subtitle: "Community Wellness",
-    description:
-      "Providing direct healthcare access and mental wellness advocacy for underserved communities.",
+      "An AI-generated welcome bringing JTAH Foundation's mission to life in a new way.",
     bg: "linear-gradient(135deg, #18132b 0%, #291f4d 45%, #614691 100%)",
+    mediaType: "video",
+    cta: "Watch Our Story",
   },
 ];
 
-const AUTOPLAY_MS = 6000;
+const AUTOPLAY_MS = 2500;
 const FADE_MS = 400;
 
 export function HeroCarousel() {
@@ -185,9 +184,13 @@ export function HeroCarousel() {
           <div className="hero-rise pt-2" style={{ animationDelay: "360ms" }}>
             <Button variant="glass" className="pl-1.5 gap-3">
               <span className="w-8 h-8 rounded-md bg-white text-ink flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                {slide.mediaType === "video" ? (
+                  <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                ) : (
+                  <Users className="w-3.5 h-3.5" />
+                )}
               </span>
-              Watch Highlights
+              {slide.cta}
             </Button>
           </div>
         </div>
