@@ -8,3 +8,13 @@ export const GALLERY_IMAGES_QUERY = defineQuery(`
     caption
   }
 `);
+
+export const EVENTS_QUERY = defineQuery(`
+  *[_type == "event"] | order(date desc) [0...4] {
+    _id,
+    title,
+    date,
+    image { asset, alt },
+    href
+  }
+`);
