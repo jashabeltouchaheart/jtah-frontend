@@ -3,19 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Heart, HandHeart } from "lucide-react";
-
-const NAV_LINKS = [
-  { label: "Home", href: "/", active: true },
-  { label: "About Us", href: "#about" },
-  { label: "Our Work", href: "#work" },
-  { label: "Events", href: "#events" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "News & Updates", href: "#news" },
-];
+import { Button } from "@/components/ui/Button";
+import { NAV_LINKS, CTA_LINKS } from "@/lib/site";
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (href: string) => href === pathname;
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-[#3a3560]/10 transition-colors">
@@ -45,9 +41,11 @@ export function Nav() {
             <Link
               key={link.label}
               href={link.href}
-              aria-current={link.active ? "page" : undefined}
+              aria-current={isActive(link.href) ? "page" : undefined}
               className={`nav-link text-[13.5px] font-normal tracking-[0.01em] transition-colors duration-300 hover:text-[#6a4f9b] py-1 ${
-                link.active ? "text-[#6a4f9b] font-medium" : "text-[#3a3560]/75"
+                isActive(link.href)
+                  ? "text-[#6a4f9b] font-medium"
+                  : "text-[#3a3560]/75"
               }`}
             >
               {link.label}
@@ -57,21 +55,24 @@ export function Nav() {
 
         {/* Action Controls & Mobile Toggle */}
         <div className="flex items-center gap-2.5 justify-self-end">
-          <Link
-            href="#volunteer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#3a3560] border border-[#3a3560]/15 hover:border-[#6a4f9b] hover:text-[#6a4f9b] hover:bg-[#eeecf7]/60 transition-all duration-300 group"
+          <Button
+            href={CTA_LINKS.volunteer}
+            variant="outline"
+            size="sm"
+            leadingIcon={<HandHeart />}
+            className="hidden sm:inline-flex"
           >
-            <HandHeart className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />
             Volunteer
-          </Link>
-
-          <Link
-            href="#donate"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#6a4f9b] hover:bg-[#593d88] text-white text-[13px] font-medium transition-all shadow-sm hover:shadow"
+          </Button>
+          <Button
+            href={CTA_LINKS.donate}
+            variant="primary"
+            size="sm"
+            leadingIcon={<Heart className="fill-current" />}
+            className="hidden sm:inline-flex"
           >
-            <Heart className="w-3.5 h-3.5 fill-current" />
             Donate
-          </Link>
+          </Button>
 
           {/* Two line menu toggle, morphs into an X when open */}
           <button
@@ -114,7 +115,7 @@ export function Nav() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={`text-sm font-semibold tracking-wide py-2.5 transition-colors ${
-                  link.active
+                  isActive(link.href)
                     ? "text-[#6a4f9b]"
                     : "text-[#3a3560]/80 hover:text-[#6a4f9b]"
                 }`}
@@ -125,22 +126,24 @@ export function Nav() {
           </nav>
 
           <div className="sm:hidden pt-4 border-t border-[#3a3560]/10 flex flex-col gap-3">
-            <Link
-              href="#volunteer"
+            <Button
+              href={CTA_LINKS.volunteer}
+              variant="outline"
+              fullWidth
+              leadingIcon={<HandHeart />}
               onClick={() => setMobileOpen(false)}
-              className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg border border-[#3a3560]/15 text-[#3a3560] text-sm font-semibold"
             >
-              <HandHeart className="w-4 h-4" />
               Volunteer
-            </Link>
-            <Link
-              href="#donate"
+            </Button>
+            <Button
+              href={CTA_LINKS.donate}
+              variant="primary"
+              fullWidth
+              leadingIcon={<Heart className="fill-current" />}
               onClick={() => setMobileOpen(false)}
-              className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-[#6a4f9b] text-white text-sm font-semibold shadow-sm"
             >
-              <Heart className="w-4 h-4 fill-current" />
               Donate
-            </Link>
+            </Button>
           </div>
         </div>
       )}
