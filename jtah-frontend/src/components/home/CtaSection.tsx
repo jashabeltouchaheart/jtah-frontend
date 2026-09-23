@@ -1,9 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-
-const outlineBtn =
-  'w-full sm:w-auto text-center px-9 py-3 sm:py-2.5 rounded-lg bg-white/70 backdrop-blur-sm border border-[#7c74b2]/45 text-[#3a3560] text-sm font-medium transition-all duration-300 hover:bg-white hover:border-[#6b5fae] hover:text-[#6b5fae] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-12px_rgba(107,95,174,0.55)] active:scale-95';
+import { Button } from "@/components/ui/Button";
+import { CTA_LINKS } from "@/lib/site";
 
 export function CtaSection() {
   return (
@@ -58,24 +56,33 @@ export function CtaSection() {
             Be Part of the Journey
           </h2>
           <p className="text-sm text-[#3a3560]/65 leading-relaxed">
-            Together, we can do more. Support our work, get involved
-            or partner with us to create lasting change.
+            Together, we can do more. Support our work, get involved or partner
+            with us to create lasting change.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full sm:w-auto">
-          <Link
-            href="#donate"
-            className="w-full sm:w-auto text-center px-10 py-3 sm:py-2.5 rounded-lg bg-gradient-to-b from-[#7a6fc0] to-[#62579f] text-white text-sm font-medium shadow-[0_10px_24px_-10px_rgba(98,87,159,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-10px_rgba(98,87,159,0.85)] hover:brightness-110 active:scale-95"
+          <Button
+            href={CTA_LINKS.donate}
+            variant="primary"
+            className="w-full sm:w-auto sm:px-10"
           >
             Donate
-          </Link>
-          <Link href="#volunteer" className={outlineBtn}>
+          </Button>
+          <Button
+            href={CTA_LINKS.volunteer}
+            variant="outline"
+            className="w-full sm:w-auto sm:px-9"
+          >
             Volunteer
-          </Link>
-          <Link href="#partner" className={outlineBtn}>
+          </Button>
+          <Button
+            href={CTA_LINKS.partner}
+            variant="outline"
+            className="w-full sm:w-auto sm:px-9"
+          >
             Partner
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

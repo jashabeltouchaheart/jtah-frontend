@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { MoveRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 
 const STATS = [
@@ -18,25 +19,21 @@ export function AboutSection() {
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         <div className="lg:col-span-5 space-y-5 sm:space-y-6">
-          <span className="text-[11px] uppercase tracking-widest font-semibold text-[#7c74b2]">
-            FOR THE LOVE OF HUMANITY
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#3a3560] leading-tight">
-            We are <span className="text-[#7c74b2]">JTAH</span>
-            <br />
-            Foundation
-          </h2>
-          <p className="text-sm sm:text-base text-[#3a3560]/70 leading-relaxed">
-            We exist to uplift individuals, strengthen communities, and create
-            sustainable change through education, empowerment, and advocacy.
-          </p>
-          <Link
-            href="#about"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-[#3a3560] hover:bg-[#7c74b2] text-white text-xs uppercase tracking-wider font-bold transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 group"
-          >
-            ABOUT US
-            <MoveRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-          </Link>
+          <SectionHeader
+            size="lg"
+            eyebrow="For the love of humanity"
+            title={
+              <>
+                We are <span className="text-lilac">JTAH</span>
+                <br />
+                Foundation
+              </>
+            }
+            description="We exist to uplift individuals, strengthen communities, and create sustainable change through education, empowerment, and advocacy."
+          />
+          <Button href="#about" variant="dark" trailingIcon={<MoveRight />}>
+            About Us
+          </Button>
         </div>
 
         <div className="lg:col-span-7 space-y-8 sm:space-y-10">

@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Play, MoveRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function InnovationSection() {
   return (
@@ -31,24 +32,18 @@ export function InnovationSection() {
 
         {/* Copy */}
         <div className="lg:col-span-4 space-y-5 sm:space-y-6">
-          <span className="text-[11px] uppercase tracking-widest font-semibold text-[#7c74b2]">
-            OUR CAUSE
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#3a3560] tracking-tight leading-tight">
-            A Brighter Future Through Innovation
-          </h2>
-          <p className="text-sm sm:text-base text-[#3a3560]/70 leading-relaxed">
-            We combine compassion with technology to create scalable solutions.
-            From AI-powered learning tools to digital advocacy, we're building a
-            smarter, more inclusive future.
-          </p>
-          <Link
+          <SectionHeader
+            eyebrow="Our cause"
+            title="A Brighter Future Through Innovation"
+            description="We combine compassion with technology to create scalable solutions. From AI-powered learning tools to digital advocacy, we're building a smarter, more inclusive future."
+          />
+          <Button
             href="#proposed-work"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#7c74b2] hover:bg-[#3a3560] text-white text-xs font-bold transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 group"
+            variant="primary"
+            trailingIcon={<MoveRight />}
           >
             See Our Proposed Work
-            <MoveRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </Link>
+          </Button>
         </div>
 
         {/* Accent graphic */}

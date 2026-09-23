@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { MoveRight, CalendarDays } from "lucide-react";
+import { CalendarDays } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ArrowLink } from "@/components/ui/ArrowLink";
 import { Reveal } from "@/components/ui/Reveal";
 
 interface EventItem {
@@ -45,23 +47,11 @@ export function EventsSection() {
       className="py-16 sm:py-20 lg:py-28 bg-[#eeecf7]/30 border-b border-[#3a3560]/10"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-10 sm:space-y-12">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div className="space-y-1.5">
-            <span className="text-[11px] uppercase tracking-widest font-semibold text-[#7c74b2]">
-              EVENTS & HIGHLIGHTS
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#3a3560] tracking-tight">
-              Moments That Matter
-            </h2>
-          </div>
-          <Link
-            href="#events"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#7c74b2] hover:text-[#3a3560] transition-colors group"
-          >
-            View All Events
-            <MoveRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </Link>
-        </div>
+        <SectionHeader
+          eyebrow="Events & Highlights"
+          title="Moments That Matter"
+          action={<ArrowLink href="#events">View All Events</ArrowLink>}
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {EVENTS.map((evt, idx) => (
