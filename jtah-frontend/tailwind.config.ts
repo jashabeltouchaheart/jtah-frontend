@@ -18,6 +18,11 @@ const config: Config = {
         "lilac-mid": "var(--lilac-mid)",
         "indigo-deep": "var(--indigo-deep)",
         white: "var(--white)",
+        // Brand tokens (hex so opacity modifiers like bg-brand/20 work)
+        brand: { DEFAULT: "#6a4f9b", hover: "#593d88" },
+        ink: "#3a3560",
+        lilac: "#7c74b2",
+        tint: "#eeecf7",
       },
       textColor: {
         secondary: "var(--text-secondary)",
