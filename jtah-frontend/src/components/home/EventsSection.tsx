@@ -15,26 +15,26 @@ interface EventItem {
 
 const EVENTS: EventItem[] = [
   {
-    title: "Jimmy Leslie - Men Why the Silence",
-    date: "12 May 2025",
+    title: "Men Why the Silence",
+    date: "12 May 2026",
     bg: "linear-gradient(135deg, #201c36 0%, #3a325a 100%)",
     href: "#event-1",
   },
   {
-    title: "Women Empowerment Summit",
-    date: "28 March 2025",
+    title: "Essay Writing Competition",
+    date: "28 March 2026",
     bg: "linear-gradient(135deg, #5f7a63 0%, #465c49 100%)",
     href: "#event-2",
   },
   {
-    title: "Back to School Initiative",
+    title: "16 Days of Activism Against Gender-Based Violence",
     date: "14 January 2025",
     bg: "linear-gradient(135deg, #b88258 0%, #90603a 100%)",
     href: "#event-3",
   },
   {
     title: "Community Outreach Program",
-    date: "10 November 2024",
+    date: "10 November 2025",
     bg: "linear-gradient(135deg, #886ea8 0%, #684f88 100%)",
     href: "#event-4",
   },
