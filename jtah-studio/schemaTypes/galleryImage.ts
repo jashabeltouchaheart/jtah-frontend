@@ -20,6 +20,23 @@ export const galleryImage = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({ name: "caption", type: "string" }),
+    defineField({
+      name: "year",
+      type: "number",
+      description:
+        "Which year this photo belongs to on the Gallery page archive, e.g. 2023.",
+      validation: (rule) => rule.required().min(2000).max(2100),
+    }),
     defineField({ name: "order", type: "number" }),
+  ],
+  orderings: [
+    {
+      title: "Year, newest first",
+      name: "yearDesc",
+      by: [
+        { field: "year", direction: "desc" },
+        { field: "order", direction: "asc" },
+      ],
+    },
   ],
 });

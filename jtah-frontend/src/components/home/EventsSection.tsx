@@ -12,6 +12,7 @@ interface SanityEvent {
   title: string;
   date: string;
   image: { asset: unknown; alt: string } | null;
+  slug: string | null;
   href: string | null;
 }
 
@@ -73,7 +74,9 @@ function formatEventDate(iso: string): string {
 }
 
 export async function EventsSection() {
-  const sanityEvents = await sanityFetch<SanityEvent[]>(EVENTS_QUERY, {}, ["event"]);
+  const sanityEvents = await sanityFetch<SanityEvent[]>(EVENTS_QUERY, {}, [
+    "event",
+  ]);
 
   const events: EventCard[] =
     sanityEvents.length > 0
@@ -81,8 +84,10 @@ export async function EventsSection() {
           key: evt._id,
           title: evt.title,
           date: formatEventDate(evt.date),
-          href: evt.href || "#events",
-          imageUrl: evt.image ? urlFor(evt.image).width(600).height(450).url() : null,
+          href: evt.href || (evt.slug ? `/gallery/${evt.slug}` : "/gallery"),
+          imageUrl: evt.image
+            ? urlFor(evt.image).width(600).height(450).url()
+            : null,
           imageAlt: evt.image?.alt || evt.title,
           fallbackBg: "linear-gradient(135deg, #3a3560 0%, #201c36 100%)",
         }))
@@ -97,12 +102,16 @@ export async function EventsSection() {
         <SectionHeader
           eyebrow="Events & Highlights"
           title="Moments That Matter"
-          action={<ArrowLink href="#events">View All Events</ArrowLink>}
+          action={<ArrowLink href="/gallery">View All Events</ArrowLink>}
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {events.map((evt, idx) => (
-            <Link key={evt.key} href={evt.href} className="group block space-y-3">
+            <Link
+              key={evt.key}
+              href={evt.href}
+              className="group block space-y-3"
+            >
               {/* Image with zoom and overlay on hover */}
               <Reveal delay={idx * 0.08}>
                 <div className="overflow-hidden rounded-2xl border border-[#3a3560]/10 shadow-sm group-hover:shadow-lg transition-shadow duration-300">
