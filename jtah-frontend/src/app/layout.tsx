@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { SITE } from "@/lib/site";
 import { Playfair_Display, Inter } from "next/font/google";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
@@ -19,8 +20,36 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "JTAH Foundation",
-  description: "JTAH Foundation.",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: `${SITE.name} | Touching Lives Since 2000`,
+    template: `%s | ${SITE.name}`, // other pages become "Events | JTAH Foundation"
+  },
+  description: SITE.description,
+  applicationName: SITE.name,
+  keywords: [
+    "JTAH Foundation",
+    "Jashabel Touch-A-Heart Foundation",
+    "women empowerment",
+    "girl child education",
+    "nonprofit",
+    "community outreach",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE.name,
+    title: `${SITE.name} | Touching Lives Since 2000`,
+    description: SITE.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} | Touching Lives Since 2000`,
+    description: SITE.description,
+  },
+  robots: { index: process.env.ALLOW_INDEXING === "true", follow: true },
 };
 
 export default function RootLayout({
