@@ -37,21 +37,6 @@ inside the Studio app or Studio schemas inside the frontend app.
 - `sanity.config.ts` and `sanity.cli.ts` own Studio configuration and CLI
   project settings.
 
-### Before adding a page
-
-1. Add the route under `src/app/` and create page-specific sections under
-   `src/components/<feature>/`.
-2. Reuse shared UI and site constants where appropriate; add CMS queries in
-   `src/sanity/queries.ts` and data mapping near the route or in a feature
-   helper when shared.
-3. Add navigation only when the route is ready to be linked, and update the
-   sitemap if the route needs a deliberate indexing policy.
-4. Run `npm run lint` and `npx tsc --noEmit` from `jtah-frontend` before
-   handing off. Run `npm run typecheck` from `jtah-studio` after schema changes.
-
-Keep credentials in each app's ignored `.env.local`; commit only the matching
-`.env.example` with variable names and safe defaults.
-
 ## Environment setup
 
 
