@@ -2,7 +2,7 @@
 
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ArrowLink } from "@/components/ui/ArrowLink";
-import { Reveal } from "@/components/ui/Reveal";
+import { ImageCard } from "../ui/ImageCard";
 
 interface Program {
   title: string;
@@ -56,34 +56,15 @@ export function OurWorkSection() {
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PROGRAMS.map((prog, idx) => (
-            <div
+          {PROGRAMS.map((prog, index) => (
+            <ImageCard
               key={prog.title}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#3a3560]/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              {/* Hover zoom on image */}
-              <Reveal className="overflow-hidden" delay={idx * 0.08}>
-                <div
-                  className="w-full h-44 sm:h-48 group-hover:scale-105 transition-transform duration-500 ease-out"
-                  style={{ background: prog.bg }}
-                />
-              </Reveal>
-
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
-                  <h3 className="font-bold text-lg text-[#3a3560] leading-snug group-hover:text-[#7c74b2] transition-colors duration-200">
-                    {prog.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#3a3560]/70 leading-relaxed">
-                    {prog.description}
-                  </p>
-                </div>
-
-                <ArrowLink href={prog.href} size="sm" className="pt-2">
-                  Learn More
-                </ArrowLink>
-              </div>
-            </div>
+              title={prog.title}
+              description={prog.description}
+              placeholder={prog.bg}
+              href={prog.href}
+              delay={index * 0.08}
+            />
           ))}
         </div>
       </div>

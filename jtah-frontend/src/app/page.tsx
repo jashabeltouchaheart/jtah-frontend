@@ -6,7 +6,7 @@ import { OurWorkSection } from "@/components/home/OurWorkSection";
 import { InnovationSection } from "@/components/home/InnovationSection";
 import { VideoTestimonialSection } from "@/components/home/VideoTestimonialSection";
 import { EventsSection } from "@/components/home/EventsSection";
-import { CtaSection } from "@/components/home/CtaSection";
+import { CtaSection } from "@/components/shared/CtaSection";
 
 // Re-fetch Sanity-backed sections
 // at most once a minute, so publishing in the Studio shows up here without
