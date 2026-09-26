@@ -3,6 +3,10 @@ import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "JTAH Foundation, touching lives since 2000";
+// ImageResponse's Node adapter resolves bundled assets with file URLs, which
+// fails on Windows during prerendering. The Edge adapter supports this route
+// without filesystem URL conversion.
+export const runtime = "edge";
 
 export default function OGImage() {
   return new ImageResponse(

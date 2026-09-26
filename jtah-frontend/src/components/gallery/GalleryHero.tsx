@@ -1,10 +1,11 @@
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function GalleryHero() {
   return (
     <section className="relative overflow-hidden bg-[var(--lilac-tint)]">
       <Container className="grid min-h-[260px] grid-cols-1 items-center gap-7 py-8 sm:min-h-[300px] sm:py-10 lg:min-h-[330px] lg:grid-cols-[0.88fr_1.12fr] lg:gap-8 lg:py-0">
-        <div className="relative z-10 max-w-lg py-2 lg:py-8">
+        <Reveal className="relative z-10 max-w-lg py-2 lg:py-8">
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--lilac-mid)]">
             Our Gallery
           </p>
@@ -18,9 +19,13 @@ export function GalleryHero() {
             activities. See the people, partnerships and progress behind our
             work.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="relative -mx-6 h-56 overflow-hidden sm:-mx-8 sm:h-64 lg:absolute lg:inset-y-0 lg:left-[43%] lg:right-0 lg:mx-0 lg:h-auto">
+        <Reveal
+          className="relative -mx-6 h-56 overflow-hidden sm:-mx-8 sm:h-64 lg:absolute lg:inset-y-0 lg:left-[43%] lg:right-0 lg:mx-0 lg:h-auto"
+          innerClassName="relative overflow-hidden"
+          delay={0.12}
+        >
           <img
             src="/gallery-mock/hero-gallery.jpg"
             alt="A young participant in one of JTAH Foundation's community programmes"
@@ -29,7 +34,7 @@ export function GalleryHero() {
             fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--lilac-tint)] via-[var(--lilac-tint)]/15 to-transparent lg:from-[var(--lilac-tint)] lg:via-[var(--lilac-tint)]/10 lg:to-transparent" />
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

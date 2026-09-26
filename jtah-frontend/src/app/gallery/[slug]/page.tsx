@@ -10,6 +10,7 @@ import { sanityFetch } from "@/sanity/fetch";
 import { GALLERY_EVENT_BY_SLUG_QUERY } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 import { MOCK_EVENTS } from "@/lib/galleryMockData";
+import { formatGalleryDate, GALLERY_CATEGORY_LABELS } from "@/lib/gallery";
 
 export const revalidate = 60;
 
@@ -26,23 +27,6 @@ interface SanityEventDetail {
   category: string | null;
   image: SanityImage | null;
   photos: SanityImage[] | null;
-}
-
-const CATEGORY_LABELS: Record<string, string> = {
-  conference: "Conference",
-  "community-event": "Community Event",
-  "community-outreach": "Community Outreach",
-  "education-skills": "Education & Skills",
-  "youth-development": "Youth Development",
-  other: "Other Event",
-};
-
-function formatEventDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
 }
 
 /** Common shape both the Sanity branch and the mock branch resolve to. */
@@ -120,7 +104,7 @@ export async function generateMetadata({
     title: event.title,
     description: `Photos from ${event.title}${
       event.location ? `, ${event.location}` : ""
-    } — ${formatEventDate(event.date)}.`,
+    } — ${formatGalleryDate(event.date)}.`,
   };
 }
 
@@ -167,7 +151,7 @@ export default async function GalleryEventPage({
               Back to {year} Gallery
             </Link>
             <span className="inline-block text-[10px] uppercase tracking-[0.12em] font-semibold text-lilac-tint bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-3">
-              {CATEGORY_LABELS[event.category ?? "other"] ?? "Event"}
+              {GALLERY_CATEGORY_LABELS[event.category ?? "other"] ?? "Event"}
             </span>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight max-w-3xl">
               {event.title}
@@ -175,7 +159,7 @@ export default async function GalleryEventPage({
             <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 mt-4 text-sm text-white/75 font-medium">
               <span className="inline-flex items-center gap-1.5">
                 <CalendarDays className="w-4 h-4 text-lilac-tint" />
-                {formatEventDate(event.date)}
+                {formatGalleryDate(event.date)}
               </span>
               {event.location && (
                 <span className="inline-flex items-center gap-1.5">

@@ -10,6 +10,8 @@ import { sanityFetch } from "@/sanity/fetch";
 import { GALLERY_EVENTS_QUERY, GALLERY_ARCHIVE_QUERY } from "@/sanity/queries";
 import { urlFor } from "@/sanity/image";
 import { MOCK_EVENTS, MOCK_ARCHIVE, YEAR_TAGLINES } from "@/lib/galleryMockData";
+import { formatGalleryDate, GALLERY_CATEGORY_LABELS } from "@/lib/gallery";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const revalidate = 60;
 
@@ -36,23 +38,6 @@ interface SanityArchivePhoto {
   caption: string | null;
 }
 
-const CATEGORY_LABELS: Record<string, string> = {
-  conference: "Conference",
-  "community-event": "Community Event",
-  "community-outreach": "Community Outreach",
-  "education-skills": "Education & Skills",
-  "youth-development": "Youth Development",
-  other: "Other Event",
-};
-
-function formatEventDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
 export default async function GalleryPage({
   searchParams,
 }: {
@@ -73,9 +58,9 @@ export default async function GalleryPage({
       key: event._id,
       slug: event.slug as string,
       title: event.title,
-      date: formatEventDate(event.date),
+      date: formatGalleryDate(event.date),
       location: event.location,
-      categoryLabel: CATEGORY_LABELS[event.category ?? "other"] ?? "Event",
+      categoryLabel: GALLERY_CATEGORY_LABELS[event.category ?? "other"] ?? "Event",
       categoryKey: event.category ?? "other",
       imageUrl: event.image
         ? urlFor(event.image).width(600).height(450).url()
@@ -88,9 +73,9 @@ export default async function GalleryPage({
       key: event.slug,
       slug: event.slug,
       title: event.title,
-      date: formatEventDate(event.date),
+      date: formatGalleryDate(event.date),
       location: event.location,
-      categoryLabel: CATEGORY_LABELS[event.category] ?? "Event",
+      categoryLabel: GALLERY_CATEGORY_LABELS[event.category] ?? "Event",
       categoryKey: event.category,
       imageUrl: event.coverImage ?? null,
       imageAlt: event.title,
@@ -150,7 +135,7 @@ export default async function GalleryPage({
   const hasEvents = eventsForYear.length > 0;
   const hasArchive = archiveForYear.length > 0;
 
-  const presentCategories = Object.entries(CATEGORY_LABELS)
+  const presentCategories = Object.entries(GALLERY_CATEGORY_LABELS)
     .filter(([key]) => eventsForYear.some((e) => e.categoryKey === key))
     .map(([key, label]) => ({ key, label }));
 
@@ -184,7 +169,10 @@ export default async function GalleryPage({
       <Section className="pt-10 pb-5 sm:pt-14 sm:pb-7 lg:pt-16 lg:pb-8 border-b-0">
         <YearSwitcher years={fallbackYears} activeYear={activeYear} />
         <div className="mt-4 rounded-xl border border-ink/10 bg-white p-5 sm:mt-5 sm:p-6 lg:p-7">
-          <div className="mb-5 grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <Reveal
+            className="mb-5"
+            innerClassName="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-start"
+          >
             <div className="space-y-1.5">
               <p className="text-[10px] uppercase tracking-[0.14em] font-semibold text-lilac">
                 {activeYear} Gallery
@@ -198,7 +186,7 @@ export default async function GalleryPage({
               </p>
             </div>
 
-          </div>
+          </Reveal>
           {hasEvents ? (
             <EventsYearGrid
               events={eventsForYear}
@@ -219,14 +207,15 @@ export default async function GalleryPage({
 
       <Section className="w-full pt-8 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 border-b-0">
         <div className="flex w-full flex-col gap-3">
-          {accordionYears.map((year) => (
-            <YearAccordionRow
-              key={year}
-              year={year}
-              tagline={YEAR_TAGLINES[year] ?? `Events and activities from ${year}.`}
-              photos={photosForYear(year)}
-              active={year === activeYear}
-            />
+          {accordionYears.map((year, index) => (
+            <Reveal key={year} delay={index * 0.05}>
+              <YearAccordionRow
+                year={year}
+                tagline={YEAR_TAGLINES[year] ?? `Events and activities from ${year}.`}
+                photos={photosForYear(year)}
+                active={year === activeYear}
+              />
+            </Reveal>
           ))}
         </div>
       </Section>
