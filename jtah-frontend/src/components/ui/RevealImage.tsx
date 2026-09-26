@@ -17,7 +17,7 @@ interface RevealImageProps {
 
 /**
  * The standard framed photo used beside text blocks (Who We Are, Founder, ...).
- * Portrait on phones, wide on tablets, square on desktop, rounded, and wiped in on scroll.
+ * 4:3 on phones, wide on tablets, square on desktop, rounded, and wiped in on scroll.
  */
 export function RevealImage({
   src,
@@ -31,7 +31,7 @@ export function RevealImage({
   return (
     <Reveal
       className={cn(
-        "relative aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[16/10] lg:aspect-square",
+        "relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[16/10] lg:aspect-square",
         className
       )}
       innerClassName="relative"

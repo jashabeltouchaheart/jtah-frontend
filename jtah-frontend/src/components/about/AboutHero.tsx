@@ -8,7 +8,7 @@ export function AboutHero() {
     <section className="relative overflow-hidden bg-tint">
       <Container className="relative grid min-h-[260px] items-center sm:min-h-[300px] lg:min-h-[330px] lg:grid-cols-2">
         {/* Text: sits above the image on desktop (z-10) */}
-        <Reveal className="relative z-10 max-w-lg py-10 lg:py-8">
+        <div className="relative z-10 max-w-lg py-10 lg:py-8">
           <Eyebrow>About JTAH</Eyebrow>
           <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
             For The Love
@@ -23,7 +23,7 @@ export function AboutHero() {
             non-governmental, non-profit organisation dedicated to promoting the
             welfare and interests of women and the girl child.
           </p>
-        </Reveal>
+        </div>
       </Container>
 
       {/* Image: stacked under the text on mobile, fills the right side on desktop */}
@@ -40,8 +40,8 @@ export function AboutHero() {
           sizes="(min-width: 1024px) 57vw, 100vw"
           className="object-cover object-[center_35%] lg:rounded-bl-[80px]"
         />
-        {/* Fades the photo into the background behind the text on desktop */}
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-tint via-tint/25 to-transparent lg:block" />
+        {/* Fades the photo into the background: from the top on mobile (text sits above it), from the left on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-b from-tint via-tint/20 to-transparent lg:bg-gradient-to-r lg:via-tint/25" />
       </Reveal>
     </section>
   );

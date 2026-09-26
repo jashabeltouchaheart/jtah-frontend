@@ -1,28 +1,21 @@
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { RevealImage } from "@/components/ui/RevealImage";
+import { MediaSplit } from "@/components/shared/MediaSplit";
 import { WHO_WE_ARE } from "@/content/about";
 
 export function WhoWeAre() {
   const { eyebrow, title, paragraphs, image } = WHO_WE_ARE;
 
   return (
-    <Section containerClassName="grid items-center gap-10 lg:grid-cols-[2fr_3fr] lg:gap-14">
-      {/* Image: wipes in on scroll */}
-      <RevealImage src={image.src} alt={image.alt} />
-
-      {/* Text */}
-      <div className="space-y-5">
+    <Section>
+      <MediaSplit image={image}>
         <SectionHeader eyebrow={eyebrow} title={title} />
         {paragraphs.map((text) => (
-          <p
-            key={text}
-            className="text-sm leading-relaxed text-ink/70 sm:text-base"
-          >
+          <p key={text} className="text-sm leading-relaxed text-ink/70 sm:text-base">
             {text}
           </p>
         ))}
-      </div>
+      </MediaSplit>
     </Section>
   );
 }
