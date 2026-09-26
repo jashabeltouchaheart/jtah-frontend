@@ -1,8 +1,8 @@
 import { pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
-import { FOUNDER } from "@/content/about";
-import { AboutHero } from "@/components/about/AboutHero";
+import { ABOUT_HERO, FOUNDER } from "@/content/about";
+import { PageHero } from "@/components/shared/PageHero";
 import { WhoWeAre } from "@/components/about/WhoWeAre";
 import { FoundingYear } from "@/components/about/FoundingYear";
 import { VisionPillars } from "@/components/about/VisionPillars";
@@ -46,7 +46,7 @@ export default function AboutPage() {
     <main className="flex flex-col bg-white">
       <JsonLd data={aboutJsonLd} />
 
-      <AboutHero />
+      <PageHero {...ABOUT_HERO} />
       <WhoWeAre />
       <FoundingYear />
       <VisionPillars />

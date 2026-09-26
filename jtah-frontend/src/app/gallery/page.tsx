@@ -1,4 +1,5 @@
-import { GalleryHero } from "@/components/gallery/GalleryHero";
+import { PageHero } from "@/components/shared/PageHero";
+import { GALLERY_HERO } from "@/content/gallery";
 import { YearOverview } from "@/components/gallery/YearOverview";
 import { YearArchiveList } from "@/components/gallery/YearArchiveList";
 import { getGalleryData } from "@/lib/gallery-data";
@@ -23,7 +24,7 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
-      <GalleryHero />
+      <PageHero {...GALLERY_HERO} />
       <YearOverview {...data} />
       <YearArchiveList {...data} />
     </main>

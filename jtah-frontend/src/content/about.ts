@@ -8,6 +8,19 @@ import {
   BookOpen,
 } from "lucide-react";
 
+export const ABOUT_HERO = {
+  eyebrow: "About JTAH",
+  title: ["For The Love", "of Humanity"],
+  subtitle: "Touching Lives Since 2000",
+  description:
+    "Jashabel Touch-A-Heart Foundation (JTAH) is a human rights, non-governmental, non-profit organisation dedicated to promoting the welfare and interests of women and the girl child.",
+  image: {
+    src: "/images/about/hero.jpg",
+    alt: "A mother and daughter supported by JTAH Foundation",
+  },
+  imagePosition: "object-[center_35%]",
+};
+
 export const WHO_WE_ARE = {
   eyebrow: "Who we are",
   title: "A Force for Positive Change",

@@ -13,12 +13,16 @@ interface MediaSplitProps {
  * Photo beside a block of text. Every "image + text" section uses this,
  * so the photo frame, column widths and spacing are identical everywhere.
  */
-export function MediaSplit({ image, children, highlighted = false }: MediaSplitProps) {
+export function MediaSplit({
+  image,
+  children,
+  highlighted = false,
+}: MediaSplitProps) {
   return (
     <div
       className={cn(
         "grid items-center gap-8 rounded-3xl p-6 sm:gap-10 sm:p-10 lg:grid-cols-[2fr_3fr] lg:gap-14 lg:p-12",
-        highlighted && "bg-tint/50"
+        highlighted && "bg-tint/50",
       )}
     >
       <RevealImage src={image.src} alt={image.alt} />
