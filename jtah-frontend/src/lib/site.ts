@@ -19,6 +19,7 @@ export const CTA_LINKS = {
   donate: "#donate",
   volunteer: "#volunteer",
   partner: "#partner",
+  contact: "#contact",
 } as const;
 
 export const SITE = {

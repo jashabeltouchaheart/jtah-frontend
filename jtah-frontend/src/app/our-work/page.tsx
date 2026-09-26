@@ -3,8 +3,11 @@ import { CasesGlance } from "@/components/our-work/CasesGlance";
 import { CaseFilters } from "@/components/our-work/CaseFilters";
 import { CaseGrid } from "@/components/our-work/CaseGrid";
 import { Section } from "@/components/ui/Section";
-import { CASES_HERO } from "@/content/cases";
+import { Pagination } from "@/components/ui/Pagination";
+import { CtaSection } from "@/components/shared/CtaSection";
+import { CASES_CTA, CASES_HERO } from "@/content/cases";
 import { getCases } from "@/lib/cases";
+import { casesHref } from "@/lib/cases-url";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -33,7 +36,13 @@ export default function OurWorkPage({ searchParams }: OurWorkPageProps) {
           Showing {results.items.length} of {results.total} cases
         </p>
         <CaseGrid items={results.items} />
+        <Pagination
+          page={results.page}
+          totalPages={results.totalPages}
+          hrefFor={(n) => casesHref({ category: results.category, q, page: n })}
+        />
       </Section>
+      <CtaSection {...CASES_CTA} />
     </main>
   );
 }

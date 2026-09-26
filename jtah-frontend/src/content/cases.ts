@@ -1,3 +1,5 @@
+import { CTA_LINKS } from "@/lib/site";
+import type { CtaSectionProps } from "@/components/shared/CtaSection";
 import type { LucideIcon } from "lucide-react";
 import { Users, FileText, HeartHandshake, CalendarDays } from "lucide-react";
 
@@ -115,4 +117,14 @@ export const CASES_GLANCE = {
       isYear: true,
     },
   ] satisfies CaseStat[],
+};
+
+export const CASES_CTA: CtaSectionProps = {
+  title: "You Are Not Alone",
+  description:
+    "If you or someone you know needs help, reach out to us. Every conversation is confidential and handled with care.",
+  actions: [
+    { label: "Get in Touch", href: CTA_LINKS.contact, variant: "primary" },
+    { label: "Donate", href: CTA_LINKS.donate },
+  ],
 };
