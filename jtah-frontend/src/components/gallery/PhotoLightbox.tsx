@@ -1,5 +1,6 @@
 "use client";
 
+import { createPortal } from "react-dom";
 import { useCallback, useEffect, useRef } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -63,7 +64,8 @@ export function PhotoLightbox({
   if (photos.length === 0) return null;
   const current = photos[index];
 
-  return (
+  // Rendered straight into <body> so no parent's stacking or clipping can trap it
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
@@ -162,6 +164,7 @@ export function PhotoLightbox({
           ))}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
