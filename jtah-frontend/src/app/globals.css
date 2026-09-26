@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide the browser's built-in clear (x) on search inputs; we render our own */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 :root {
   --lilac-tint: #eeecf7;
   --lilac-mid: #7c74b2;
