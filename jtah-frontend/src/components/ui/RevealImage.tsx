@@ -1,56 +1,50 @@
-"use client";
-
 import Image from "next/image";
-import { useRevealAnimation } from "@/hooks/useRevealAnimation";
+import { Reveal } from "./Reveal";
+import { cn } from "@/lib/cn";
 
 interface RevealImageProps {
   src: string;
   alt: string;
-  fill?: boolean;
-  width?: number;
-  height?: number;
-  priority?: boolean;
+  /** How wide the image renders, so the browser downloads the right size */
   sizes?: string;
+  priority?: boolean;
+  /** Override the frame, e.g. a different aspect ratio */
   className?: string;
+  /** Extra classes for the image itself, e.g. a different crop position */
   imageClassName?: string;
-  aspectRatio?: string;
+  delay?: number;
 }
 
+/**
+ * The standard framed photo used beside text blocks (Who We Are, Founder, ...).
+ * Portrait on phones, wide on tablets, square on desktop, rounded, and wiped in on scroll.
+ */
 export function RevealImage({
   src,
   alt,
-  fill = true,
-  width,
-  height,
+  sizes = "(min-width: 1024px) 40vw, 100vw",
   priority = false,
-  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
-  className = "",
-  imageClassName = "",
-  aspectRatio,
+  className,
+  imageClassName,
+  delay = 0,
 }: RevealImageProps) {
-  const { containerRef, imageWrapperRef } = useRevealAnimation();
-
   return (
-    <div
-      ref={containerRef}
-      style={aspectRatio ? { aspectRatio } : undefined}
-      className={`relative overflow-hidden ${className}`}
+    <Reveal
+      className={cn(
+        "relative aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[16/10] lg:aspect-square",
+        className
+      )}
+      innerClassName="relative"
+      delay={delay}
     >
-      <div
-        ref={imageWrapperRef}
-        className="w-full h-full relative will-change-[clip-path]"
-      >
-        <Image
-          src={src}
-          alt={alt}
-          fill={fill}
-          width={!fill ? width : undefined}
-          height={!fill ? height : undefined}
-          priority={priority}
-          sizes={sizes}
-          className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] ${imageClassName}`}
-        />
-      </div>
-    </div>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
+        sizes={sizes}
+        className={cn("object-cover object-top", imageClassName)}
+      />
+    </Reveal>
   );
 }
