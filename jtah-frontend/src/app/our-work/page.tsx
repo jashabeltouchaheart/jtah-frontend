@@ -1,6 +1,7 @@
 import { PageHero } from "@/components/shared/PageHero";
 import { CasesGlance } from "@/components/our-work/CasesGlance";
 import { CaseFilters } from "@/components/our-work/CaseFilters";
+import { CaseGrid } from "@/components/our-work/CaseGrid";
 import { Section } from "@/components/ui/Section";
 import { CASES_HERO } from "@/content/cases";
 import { getCases } from "@/lib/cases";
@@ -28,9 +29,10 @@ export default function OurWorkPage({ searchParams }: OurWorkPageProps) {
       <CasesGlance />
       <Section aria-label="Browse cases">
         <CaseFilters category={results.category} q={q} />
-        <p className="mt-6 text-sm text-ink/70">
+        <p className="mb-6 mt-6 text-sm text-ink/70">
           Showing {results.items.length} of {results.total} cases
         </p>
+        <CaseGrid items={results.items} />
       </Section>
     </main>
   );

@@ -7,6 +7,8 @@ import { cn } from "@/lib/cn";
 export interface ImageCardProps {
   title: string;
   description: string;
+  /** Small label above the title, e.g. a category or date */
+  eyebrow?: string;
   /** A real photo. If missing, the placeholder background is shown instead */
   image?: { src: string; alt: string };
   /** Any CSS background, e.g. a gradient, used until a photo exists */
@@ -24,6 +26,7 @@ export interface ImageCardProps {
 export function ImageCard({
   title,
   description,
+  eyebrow,
   image,
   placeholder = "linear-gradient(135deg, #d8d3e8 0%, #c4bddb 100%)",
   icon: Icon,
@@ -75,6 +78,11 @@ export function ImageCard({
           Icon ? "pt-10" : "pt-6",
         )}
       >
+        {eyebrow && (
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-brand">
+            {eyebrow}
+          </p>
+        )}
         <h3 className="text-lg font-bold leading-snug text-ink transition-colors duration-200 group-hover:text-lilac">
           {title}
         </h3>

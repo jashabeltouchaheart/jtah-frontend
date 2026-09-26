@@ -44,3 +44,7 @@ export function getCases({ category, q, page }: CaseQuery): CaseResults {
     category: isCategory(category) ? category : undefined,
   };
 }
+
+/** Human label for a category key, e.g. "child-welfare" -> "Child Welfare" */
+export const categoryLabel = (key: string) =>
+  CASE_CATEGORIES.find((c) => c.key === key)?.label ?? key;
