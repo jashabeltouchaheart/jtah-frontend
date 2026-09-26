@@ -52,7 +52,12 @@ export function SectionHeader({
           {title}
         </Heading>
         {description && (
-          <p className="pt-2 text-sm sm:text-base text-ink/70 leading-relaxed max-w-xl">
+          <p
+            className={cn(
+              "pt-2 text-sm sm:text-base text-ink/70 leading-relaxed max-w-xl",
+              centered && "mx-auto",
+            )}
+          >
             {description}
           </p>
         )}
