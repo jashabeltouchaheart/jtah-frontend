@@ -177,7 +177,7 @@ export const MOCK_EVENTS: MockGalleryEvent[] = [
     location: "Lagos, Nigeria",
     category: "education-skills",
     coverGradient: "linear-gradient(135deg, #5f7a63 0%, #465c49 100%)",
-    coverImage: "https://ssir.org/images/jcogs_img/cache/embedding-innovations-in-government-systems-africa-592x395_-_abcdef_-_ec76adfb59d23efa05b4d7ecdd5601e6950c9f26.webp",
+    coverImage: "https://images.unsplash.com/photo-1761370981247-1dfd749ec96b?auto=format&fit=crop&w=1200&q=85",
     photos: [
       {
         key: "skills-development-workshop-2026-1",
