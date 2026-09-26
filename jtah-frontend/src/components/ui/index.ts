@@ -7,3 +7,4 @@ export { Container } from "./Container";
 export { Section } from "./Section";
 export { Reveal } from "./Reveal";
 export { RevealImage } from "./RevealImage";
+export { Pagination } from "./Pagination";

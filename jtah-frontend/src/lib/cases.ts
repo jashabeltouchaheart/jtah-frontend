@@ -19,7 +19,6 @@ export interface CaseResults {
 const isCategory = (value?: string) =>
   CASE_CATEGORIES.some((c) => c.key === value);
 
-/** Filter, search and paginate cases. The one place to switch to Sanity later. */
 export function getCases({ category, q, page }: CaseQuery): CaseResults {
   const search = q?.trim().toLowerCase() ?? "";
 
