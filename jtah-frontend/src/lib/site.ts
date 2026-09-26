@@ -9,7 +9,7 @@ export interface NavLink {
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
   { label: "Our Work", href: "#work" },
   { label: "Events", href: "#events" },
   { label: "Gallery", href: "/gallery" },
@@ -34,6 +34,6 @@ export const SITE = {
     "https://x.com/jtahf?s=11",
     "https://youtube.com/@jtah.foundation?si=57tkLVDY8Lwirsun",
     "https://www.instagram.com/jtahfoundation?stkn=bWY5M3J2d2x2a3Vy",
-    "https://linkedin.com/..."
+    "https://linkedin.com/...",
   ],
 };

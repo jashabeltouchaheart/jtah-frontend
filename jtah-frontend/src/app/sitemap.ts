@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["event"],
   );
 
-  const staticRoutes = ["/", "/gallery"];
+  const staticRoutes = ["/", "/gallery", "/about"];
   const eventRoutes = events
     .filter((e) => e.slug)
     .map((e) => `/gallery/${e.slug}`);
